@@ -45,6 +45,7 @@ export default class Product {
   }
 
   deleteElement() {
+    const confirm = this.confirmController.showConfirmForm();
     this._element.remove();
   }
 }

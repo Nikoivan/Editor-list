@@ -46,6 +46,8 @@ export default class Product {
 
   deleteElement() {
     const confirm = this.confirmController.showConfirmForm();
+
+    //необходимо связать с наличием или отсутствие подтверждения
     this._element.remove();
   }
 }

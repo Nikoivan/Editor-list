@@ -1,12 +1,12 @@
-import EditorWidget from "../editor-widget/editor-widget";
-import Form from "../editor-widget/components/form";
-import Product from "../editor-widget/components/product";
-import PopupFactory from "../editor-widget/components/popup";
-import TooltipFactory from "../editor-widget/components/tooltips";
-import ConfirmFactory from "../editor-widget/components/confirm";
+import EditorWidget from '../editor-widget/editor-widget';
+import Form from '../editor-widget/components/form';
+import Product from '../editor-widget/components/product';
+import PopupFactory from '../editor-widget/components/popup';
+import TooltipFactory from '../editor-widget/components/tooltips';
+import ConfirmFactory from '../editor-widget/components/confirm';
 
 const properties = {
-  parentName: "container",
+  parentName: 'container',
   form: Form,
   product: Product,
   popupFactory: PopupFactory,

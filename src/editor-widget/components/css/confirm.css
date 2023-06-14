@@ -1,0 +1,18 @@
+.confirm-container {
+    width: 500px;
+    padding: 1rem;
+    background-color: #ee8080;
+    position: absolute;
+    z-index: 2;
+    border-radius: 5px;
+}
+
+.confirm-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn {
+    margin-left: 1rem;
+}

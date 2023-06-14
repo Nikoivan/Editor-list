@@ -1,54 +1,60 @@
-import "./css/confirm.css";
+import './css/confirm.css';
 
 export default class ConfirmFactory {
   constructor(settings) {
     this.settings = settings;
-    this.activeConfirms = [];
 
-    this.container = document.createElement("div");
-    this.container.classList.add("confirm-container");
-    this.container.append(this.form);
+    this.container = document.createElement('div');
+    this.container.classList.add('confirm-container');
+    this._form = this.form;
+    this.container.append(this._form);
 
     this.onBtnClick = this.onBtnClick.bind(this);
 
-    this._form.addEventListener("click", onBtnClick);
+    this._form.addEventListener('click', this.onBtnClick);
   }
 
   get form() {
     const { confirmTitle, acceptBtn, cancelBtn } = this.settings;
 
-    this._form = document.createElement("form");
-    this._form.classList.add("confirm-form");
+    const form = document.createElement('form');
+    form.classList.add('confirm-form');
 
-    this._form.innerHTML = `<div class="confirm-wrapper">
+    form.innerHTML = `<div class="confirm-wrapper">
     <h3 class="confirm-title">${confirmTitle}</h3>
-    <button class="confirm-accept-btn">${acceptBtn}</button>
-    <button class="confirm-cancel-btn">${cancelBtn}</button>
+    <button class="btn confirm-accept-btn">${acceptBtn}</button>
+    <button class="btn confirm-cancel-btn">${cancelBtn}</button>
 </div>`;
 
     return form;
   }
 
-  showConfirmForm() {
-    const id = performance.now();
-    document.body.append(this._form);
-    this.activeConfirms.push({ id, element: this._form });
-    return id;
+  showConfirmForm(element) {
+    const { top, left } = element.getBoundingClientRect();
+    document.body.append(this.container);
+
+    this.container.style.top = `${
+      top + element.offsetHeight / 2 - this.container.offsetHeight / 2
+    }px`;
+    this.container.style.left = `${
+      left + element.offsetWidth / 2 - this.container.offsetWidth / 2
+    }px`;
+
+    this.elToDo = element;
   }
 
   onBtnClick(e) {
     e.preventDefault();
 
-    if (e.target.classList.constains("confirm-accept-btn")) {
-      return true;
-    } else if (e.target.classList.constains("confirm-cancel-btn")) {
-      return false;
+    if (e.target.classList.contains('confirm-accept-btn')) {
+      this.elToDo.remove();
+      this.deleteConfirmForm();
+    } else if (e.target.classList.contains('confirm-cancel-btn')) {
+      this.deleteConfirmForm();
     }
   }
 
-  deleteConfirmForm(id) {
-    const form = this.activeConfirms.find((el) => el.id === id);
-    form.remove();
-    this.activeConfirms = this.activeConfirms.filter((el) => el.id !== id);
+  deleteConfirmForm() {
+    this.container.remove();
   }
 }

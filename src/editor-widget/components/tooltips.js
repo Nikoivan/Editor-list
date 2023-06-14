@@ -1,4 +1,4 @@
-import "./css/tooltips.css";
+import './css/tooltips.css';
 
 export default class TooltipFactory {
   constructor() {
@@ -8,12 +8,12 @@ export default class TooltipFactory {
   showTooltip(data) {
     const { message, element } = data;
 
-    const tooltipText = document.createElement("p");
+    const tooltipText = document.createElement('p');
     tooltipText.textContent = message;
-    tooltipText.classList.add("tooltip-text");
+    tooltipText.classList.add('tooltip-text');
 
-    const tooltipEl = document.createElement("div");
-    tooltipEl.classList.add("tooltip");
+    const tooltipEl = document.createElement('div');
+    tooltipEl.classList.add('tooltip');
 
     tooltipEl.append(tooltipText);
 

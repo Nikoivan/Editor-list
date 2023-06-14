@@ -1,4 +1,4 @@
-import "./css/popup.css";
+import './css/popup.css';
 
 export default class PopupFactory {
   constructor(inElement, onElement) {
@@ -9,7 +9,7 @@ export default class PopupFactory {
 
   showPopup(element) {
     const id = Math.ceil(performance.now());
-    element.classList.add("popup");
+    element.classList.add('popup');
     element.dataset.id = id;
     this.inElement.append(element);
 

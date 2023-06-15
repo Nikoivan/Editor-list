@@ -1,46 +1,48 @@
-import './css/form.css';
+import "./css/form.css";
 
 export default class Form {
   constructor(tooltipController) {
-    const form = document.createElement('form');
-    form.classList.add('form-widget');
-    form.setAttribute('novalidate', true);
+    const form = document.createElement("form");
+    form.classList.add("form-widget");
+    form.setAttribute("novalidate", true);
 
-    const itemName = document.createElement('label');
-    itemName.classList.add('item-label');
-    itemName.setAttribute('for', 'title');
-    itemName.textContent = 'Название';
+    const itemName = document.createElement("label");
+    itemName.classList.add("item-label");
+    itemName.setAttribute("for", "title");
+    itemName.textContent = "Название";
 
-    const inputTitle = document.createElement('input');
-    inputTitle.classList.add('item-input');
-    inputTitle.setAttribute('type', 'text');
-    inputTitle.setAttribute('id', 'title');
-    inputTitle.setAttribute('name', 'item-title');
-    inputTitle.setAttribute('required', true);
+    const inputTitle = document.createElement("input");
+    inputTitle.classList.add("item-input");
+    inputTitle.classList.add("title");
+    inputTitle.setAttribute("type", "text");
+    inputTitle.setAttribute("name", "item-title");
+    inputTitle.setAttribute("required", true);
 
-    const itemPrice = document.createElement('label');
-    itemPrice.classList.add('item-label');
-    itemPrice.setAttribute('for', 'price');
-    itemPrice.textContent = 'Стоимость';
+    const itemPrice = document.createElement("label");
+    itemPrice.classList.add("item-label");
+    itemPrice.setAttribute("for", "price");
+    itemPrice.textContent = "Стоимость";
 
-    const inputPrice = document.createElement('input');
-    inputPrice.classList.add('item-input');
-    inputPrice.setAttribute('type', 'text');
-    inputPrice.setAttribute('id', 'price');
-    inputPrice.setAttribute('name', 'item-price');
-    inputPrice.setAttribute('required', true);
-    inputPrice.setAttribute('pattern', '^[0-9 ]+');
+    const inputPrice = document.createElement("input");
+    inputPrice.classList.add("item-input");
+    inputPrice.classList.add("price");
+    inputPrice.setAttribute("type", "text");
+    inputPrice.setAttribute("name", "item-price");
+    inputPrice.setAttribute("required", true);
+    inputPrice.setAttribute("pattern", "^[0-9 ]+");
 
-    const acceptBtn = document.createElement('button');
-    acceptBtn.classList.add('btn');
-    acceptBtn.textContent = 'Сохранить';
+    const acceptBtn = document.createElement("button");
+    acceptBtn.classList.add("btn");
+    acceptBtn.classList.add("accept");
+    acceptBtn.textContent = "Сохранить";
 
-    const cancelBtn = document.createElement('button');
-    cancelBtn.classList.add('btn');
-    cancelBtn.textContent = 'Отмена';
+    const cancelBtn = document.createElement("button");
+    cancelBtn.classList.add("btn");
+    cancelBtn.classList.add("cancel");
+    cancelBtn.textContent = "Отмена";
 
-    const btnContainer = document.createElement('div');
-    btnContainer.classList.add('btn-container');
+    const btnContainer = document.createElement("div");
+    btnContainer.classList.add("btn-container");
     btnContainer.append(acceptBtn);
     btnContainer.append(cancelBtn);
 
@@ -56,12 +58,12 @@ export default class Form {
     this.tooltipController = new tooltipController();
 
     this.errors = {
-      'item-title': {
-        valueMissing: 'Введите название товара',
+      "item-title": {
+        valueMissing: "Введите название товара",
       },
-      'item-price': {
-        valueMissing: 'Укажите стоимость товара',
-        patternMismatch: 'Стоимость товара должна быть указана в цифрах',
+      "item-price": {
+        valueMissing: "Укажите стоимость товара",
+        patternMismatch: "Стоимость товара должна быть указана в цифрах",
       },
     };
   }
@@ -98,7 +100,7 @@ export default class Form {
     const error = { valid: true };
     elements.some((el) => {
       return Object.keys(ValidityState.prototype).some((key) => {
-        if (key === 'valid') {
+        if (key === "valid") {
           return;
         }
 
